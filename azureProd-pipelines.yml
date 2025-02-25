@@ -16,7 +16,11 @@ pool:
 
 variables:
   phpVersion: 7.4
-
+  AZURE_MYSQL_HOST: "php-laravel-te-server.mysql.database.azure.com"
+  AZURE_MYSQL_PORT: "3306"
+  AZURE_MYSQL_DBNAME: "php-laravel-te-database"
+  AZURE_MYSQL_USERNAME: "rvasspnucb"
+  AZURE_MYSQL_PASSWORD: "6Tc$nTADtQNyP4M$"
 steps:
 - script: |
     PHP_VERSION=$(phpVersion)
@@ -57,12 +61,12 @@ steps:
     sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=${AZURE_MYSQL_PASSWORD}/" .env
     php artisan key:generate --ansi
   displayName: 'Configure .env & generate key'
-  env:
-    AZURE_MYSQL_HOST: $(AZURE_MYSQL_HOST)
-    AZURE_MYSQL_PORT: $(AZURE_MYSQL_PORT)
-    AZURE_MYSQL_DBNAME: $(AZURE_MYSQL_DBNAME)
-    AZURE_MYSQL_USERNAME: $(AZURE_MYSQL_USERNAME)
-    AZURE_MYSQL_PASSWORD: $(AZURE_MYSQL_PASSWORD)
+ # env:
+ #   AZURE_MYSQL_HOST: $(AZURE_MYSQL_HOST)
+ #   AZURE_MYSQL_PORT: $(AZURE_MYSQL_PORT)
+ #   AZURE_MYSQL_DBNAME: $(AZURE_MYSQL_DBNAME)
+ #   AZURE_MYSQL_USERNAME: $(AZURE_MYSQL_USERNAME)
+ #   AZURE_MYSQL_PASSWORD: $(AZURE_MYSQL_PASSWORD)
 
 # If you want to run migrations & seeds as part of build:
 - script: |
