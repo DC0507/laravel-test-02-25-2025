@@ -6,7 +6,7 @@
 trigger:
   branches:
     include:
-      - dev
+      - main
   paths:
     include:
       - '*'  # Ensures all paths trigger the pipeline
